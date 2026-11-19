@@ -1,0 +1,669 @@
+[11/19/2026 4:17 PM] Parsa: <!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HOI4 HUB | Hearts of Iron IV</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --bg: #10120f;
+  --panel: #191c17;
+  --panel2: #20241d;
+  --olive: #78845a;
+  --gold: #c4a76b;
+  --red: #8f3731;
+  --text: #eeeadd;
+  --muted: #a4a596;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Vazirmatn', sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+header {
+  height: 76px;
+  background: rgba(16,18,15,.96);
+  border-bottom: 1px solid #34372b;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 7%;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  font-family: Arial, sans-serif;
+  font-size: 25px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  color: var(--gold);
+}
+
+.logo span {
+  color: white;
+}
+
+nav {
+  display: flex;
+  gap: 28px;
+}
+
+nav a {
+  color: #c4c4b7;
+  font-size: 13px;
+  transition: .2s;
+}
+
+nav a:hover {
+  color: var(--gold);
+}
+
+.header-btn {
+  background: var(--olive);
+  padding: 9px 18px;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.hero {
+  min-height: 570px;
+  padding: 100px 8%;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(90deg, rgba(12,14,12,.98), rgba(12,14,12,.75), rgba(12,14,12,.4)),
+    radial-gradient(ellipse at 70% 45%, #596344 0%, #272e24 30%, #10120f 75%);
+  border-bottom: 1px solid #393b2d;
+}
+
+.hero::after {
+  content: "1936";
+  position: absolute;
+  left: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: Arial;
+  font-weight: 900;
+  font-size: clamp(100px, 20vw, 270px);
+  color: rgba(255,255,255,.035);
+  pointer-events: none;
+}
+
+.hero-content {
+  max-width: 620px;
+  position: relative;
+  z-index: 2;
+}
+
+.label {
+  display: inline-block;
+  border-right: 3px solid var(--gold);
+  padding-right: 12px;
+  color: var(--gold);
+  font-size: 12px;
+  letter-spacing: 1px;
+  margin-bottom: 25px;
+}
+
+.hero h1 {
+  font-size: clamp(42px, 6vw, 75px);
+  line-height: 1.25;
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+
+.hero h1 span {
+  color: var(--gold);
+  font-family: Arial;
+}
+
+.hero p {
+  color: #c2c4b6;
+  line-height: 2.2;
+  font-size: 14px;
+  max-width: 520px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 35px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 13px 25px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 700;
+  transition: .25s;
+}
+
+.btn-primary {
+  background: var(--olive);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #929f6d;
+  transform: translateY(-3px);
+}
+
+.btn-secondary {
+  border: 1px solid #777968;
+  color: white;
+}
+
+.btn-secondary:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.container {
+  width: 84%;
+  max-width: 1250px;
+  margin: auto;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 15px;
+  margin-top: -35px;
+  position: relative;
+  z-index: 3;
+}
+
+.stat {
+  background: var(--panel);
+  border: 1px solid #363a2e;
+  padding: 23px;
+  text-align: center;
+  border-radius: 7px;
+}
+
+.stat strong {
+  display: block;
+  font-size: 22px;
+  color: var(--gold);
+  margin-bottom: 5px;
+}
+
+.stat small {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+section {
+  padding: 85px 0 20px;
+}
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  gap: 15px;
+}
+
+.section-heading h2 {
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.section-heading h2 span {
+  color: var(--gold);
+}
+
+.section-heading a {
+  color: var(--gold);
+  font-size: 12px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 20px;
+}
+
+.card {
+  background: var(--panel);
+  border: 1px solid #34382d;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: .3s;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  border-color: var(--gold);
+}
+[11/19/2026 4:17 PM] Parsa: .card-image {
+  height: 170px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 55px;
+  background:
+    radial-gradient(circle at center, #626b4c, #293024 65%, #171a15);
+  border-bottom: 1px solid #424638;
+}
+
+.card:nth-child(2) .card-image {
+  background: radial-gradient(circle, #663d34, #30211e 70%);
+}
+
+.card:nth-child(3) .card-image {
+  background: radial-gradient(circle, #53616b, #242a2d 70%);
+}
+
+.card-content {
+  padding: 20px;
+}
+
+.card-content h3 {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.card-content p {
+  font-size: 12px;
+  line-height: 2;
+  color: var(--muted);
+  min-height: 50px;
+}
+
+.card-link {
+  display: inline-block;
+  margin-top: 15px;
+  color: var(--gold);
+  font-size: 12px;
+}
+
+.version-box {
+  background: linear-gradient(110deg, #252c20, #191c17);
+  border: 1px solid #414833;
+  border-radius: 9px;
+  padding: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+}
+
+.version-box h2 {
+  font-size: 22px;
+  margin-bottom: 12px;
+}
+
+.version-box p {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 2;
+}
+
+.badge {
+  display: inline-block;
+  background: #38452c;
+  color: #c5d49f;
+  padding: 5px 12px;
+  border-radius: 3px;
+  font-size: 11px;
+  margin-bottom: 12px;
+}
+
+.search-box {
+  background: var(--panel);
+  border: 1px solid #3b4031;
+  border-radius: 7px;
+  padding: 10px 15px;
+  width: 260px;
+  color: white;
+  font-family: inherit;
+  outline: none;
+}
+
+.search-box:focus {
+  border-color: var(--gold);
+}
+
+.search-box::placeholder {
+  color: #92958a;
+}
+
+footer {
+  margin-top: 100px;
+  background: #151813;
+  border-top: 1px solid #34382d;
+  padding: 40px 8%;
+  text-align: center;
+}
+
+footer .logo {
+  margin-bottom: 15px;
+}
+
+footer p {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 2.2;
+}
+
+@media(max-width:850px) {
+  nav {
+    display: none;
+  }
+
+  .cards {
+    grid-template-columns: repeat(2,1fr);
+  }
+
+  .container {
+    width: 90%;
+  }
+}
+
+@media(max-width:550px) {
+  header {
+    padding: 0 5%;
+  }
+
+  .header-btn {
+    font-size: 10px;
+  }
+
+  .hero {
+    padding: 85px 6%;
+    min-height: 480px;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .stats {
+    grid-template-columns: 1fr;
+  }
+
+  .version-box {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .section-heading {
+    flex-wrap: wrap;
+  }
+
+  .search-box {
+    width: 100%;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <a href="#" class="logo">HOI4 <span>HUB</span></a>
+
+  <nav>
+    <a href="#home">صفحه اصلی</a>
+    <a href="#mods">مودها</a>
+    <a href="#dlc">بسته‌های الحاقی</a>
+    <a href="#guides">آموزش‌ها</a>
+    <a href="#download">دانلود بازی</a>
+  </nav>
+
+  <a href="#mods" class="header-btn">ورود به آرشیو</a>
+</header>
+
+<main>
+
+<div class="hero" id="home">
+  <div class="hero-content">
+    <div class="label">THE ULTIMATE HOI4 DATABASE</div>
+
+    <h1>
+      تاریخ را<br>
+      <span>دوباره بنویس.</span>
+    </h1>
+
+    <p>
+      به HOI4 HUB خوش آمدی؛ پایگاه اختصاصی بازیکنان
+      Hearts of Iron IV. دنیایی از مودها، بسته‌های الحاقی،
+      راهنماها و اخبار دنیای استراتژی.
+    </p>
+
+    <div class="hero-buttons">
+      <a href="#mods" class="btn btn-primary">مشاهده مودها</a>
+      <a href="#download" class="btn btn-secondary">معرفی بازی</a>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="stats">
+    <div class="stat">
+      <strong>MODS</strong>
+      <small>آرشیو مودهای بازی</small>
+    </div>
+
+    <div class="stat">
+      <strong>DLC</strong>
+      <small>بسته‌های الحاقی</small>
+    </div>
+
+    <div class="stat">
+      <strong>GUIDES</strong>
+      <small>آموزش و راهنمای بازی</small>
+    </div>
+  </div>
+
+  <section id="mods">
+    <div class="section-heading">
+      <h2>آرشیو <span>مودها</span></h2>
+      <input id="search" class="search-box"
+      type="search" placeholder="جستجوی مود...">
+    </div>
+
+    <div class="cards" id="modCards">
+[11/19/2026 4:17 PM] Parsa: <article class="card" data-name="road to 56">
+        <div class="card-image">🌍</div>
+        <div class="card-content">
+          <h3>Road to 56</h3>
+          <p>
+            یک تجربه گسترده‌تر از HOI4 با تمرکز بر
+            محتوای بیشتر، تمرکزهای ملی و رویدادهای جدید.
+          </p>
+          <a class="card-link"
+          href="https://steamcommunity.com/workshop/browse/?appid=394360&searchtext=Road+to+56"
+          target="_blank" rel="noopener">
+            مشاهده مود ←
+          </a>
+        </div>
+      </article>
+
+      <article class="card" data-name="kaiserreich">
+        <div class="card-image">⚔️</div>
+        <div class="card-content">
+          <h3>Kaiserreich</h3>
+          <p>
+            یک جهان جایگزین تاریخی با داستان،
+            کشورها و مسیرهای سیاسی متفاوت.
+          </p>
+          <a class="card-link"
+          href="https://steamcommunity.com/workshop/browse/?appid=394360&searchtext=Kaiserreich"
+          target="_blank" rel="noopener">
+            مشاهده مود ←
+          </a>
+        </div>
+      </article>
+
+      <article class="card" data-name="millennium dawn">
+        <div class="card-image">🚀</div>
+        <div class="card-content">
+          <h3>Millennium Dawn</h3>
+          <p>
+            تجربه‌ای مدرن از دنیای سیاست و
+            استراتژی در دوران معاصر.
+          </p>
+          <a class="card-link"
+          href="https://steamcommunity.com/workshop/browse/?appid=394360&searchtext=Millennium+Dawn"
+          target="_blank" rel="noopener">
+            مشاهده مود ←
+          </a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section id="dlc">
+    <div class="section-heading">
+      <h2>بسته‌های <span>الحاقی</span></h2>
+      <a href="https://store.steampowered.com/dlc/394360/"
+      target="_blank" rel="noopener">مشاهده همه ←</a>
+    </div>
+
+    <div class="cards">
+
+      <article class="card">
+        <div class="card-image">🏛️</div>
+        <div class="card-content">
+          <h3>Expansion Packs</h3>
+          <p>بسته‌های بزرگ الحاقی و تغییرات مهم بازی.</p>
+          <a class="card-link"
+          href="https://store.steampowered.com/dlc/394360/"
+          target="_blank" rel="noopener">مشاهده در Steam ←</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-image">🎖️</div>
+        <div class="card-content">
+          <h3>Country Packs</h3>
+          <p>محتوای اختصاصی برای کشورها و مناطق مختلف.</p>
+          <a class="card-link"
+          href="https://store.steampowered.com/dlc/394360/"
+          target="_blank" rel="noopener">مشاهده در Steam ←</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-image">🗺️</div>
+        <div class="card-content">
+          <h3>Cosmetic Packs</h3>
+          <p>محتواهای ظاهری و تغییرات گرافیکی بازی.</p>
+          <a class="card-link"
+          href="https://store.steampowered.com/dlc/394360/"
+          target="_blank" rel="noopener">مشاهده در Steam ←</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section id="download">
+    <div class="version-box">
+      <div>
+        <span class="badge">OFFICIAL GAME</span>
+        <h2>Hearts of Iron IV</h2>
+        <p>
+          برای خرید بازی و بررسی آخرین نسخه و
+          به‌روزرسانی‌ها به صفحه رسمی آن مراجعه کن.
+        </p>
+      </div>
+
+      <a class="btn btn-primary"
+      href="https://store.steampowered.com/app/394360/"
+      target="_blank" rel="noopener">
+        مشاهده بازی در Steam
+      </a>
+    </div>
+  </section>
+
+  <section id="guides">
+    <div class="section-heading">
+      <h2>بخش <span>آموزش</span></h2>
+    </div>
+
+    <div class="cards">
+
+      <article class="card">
+        <div class="card-image">📚</div>
+        <div class="card-content">
+          <h3>آموزش نصب مود</h3>
+          <p>آشنایی با Steam Workshop و مدیریت مودها.</p>
+        </div>
+      </article>
+[11/19/2026 4:17 PM] Parsa: <article class="card">
+        <div class="card-image">🛡️</div>
+        <div class="card-content">
+          <h3>آموزش استراتژی</h3>
+          <p>آشنایی با اقتصاد، ارتش و سیاست در بازی.</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-image">🌐</div>
+        <div class="card-content">
+          <h3>معرفی کشورها</h3>
+          <p>بررسی مسیرهای تاریخی و جایگزین کشورها.</p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+</div>
+</main>
+
+<footer>
+  <div class="logo">HOI4 <span>HUB</span></div>
+  <p>
+    پایگاه اختصاصی علاقه‌مندان Hearts of Iron IV
+    <br>
+    این وب‌سایت مستقل است و وابستگی رسمی به Paradox Interactive ندارد.
+    <br>
+    © 2026 HOI4 HUB
+  </p>
+</footer>
+
+<script>
+const search = document.getElementById('search');
+const cards = document.querySelectorAll('#modCards .card');
+
+search.addEventListener('input', function() {
+  const query = this.value.trim().toLowerCase();
+
+  cards.forEach(card => {
+    const name = card.dataset.name.toLowerCase();
+    card.style.display = name.includes(query) ? '' : 'none';
+  });
+});
+</script>
+
+</body>
+</html>
